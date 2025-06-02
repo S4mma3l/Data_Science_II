@@ -113,7 +113,37 @@ print(df2)  # Muestra el nuevo DataFrame con los apartamentos filtrados
 
 ## Almacenasdo los archivos
 
-df.to_csv('Pandas_conociendo_la_biblioteca\Tratamiento_y_filtrado_de_los_datos\inmuebles_ml.cvs', index=False, sep=';')  # Guarda el DataFrame filtrado en un archivo CSV sin el índice
+df.to_csv('Pandas_conociendo_la_biblioteca\Manipulacion_de_los_datos\inmuebles_ml.cvs', index=False, sep=';')  # Guarda el DataFrame filtrado en un archivo CSV sin el índice
 
-df1.to_csv('Pandas_conociendo_la_biblioteca\Tratamiento_y_filtrado_de_los_datos\inmuebles_ml_filtro1.cvs', index=False, sep=';')
-df2.to_csv('Pandas_conociendo_la_biblioteca\Tratamiento_y_filtrado_de_los_datos\inmuebles_ml_filtro2.cvs', index=False, sep=';')
+df1.to_csv('Pandas_conociendo_la_biblioteca\Manipulacion_de_los_datos\inmuebles_ml_filtro1.cvs', index=False, sep=';')
+df2.to_csv('Pandas_conociendo_la_biblioteca\Manipulacion_de_los_datos\inmuebles_ml_filtro2.cvs', index=False, sep=';')
+
+## Demandas de DEV
+### Crear columnas numericas
+#### Valor_mensual: esta columna debe de tener los gastos mensuales de propiedad, incluyendo el alquiler y el condominio
+
+datos = pd.read_csv(url, sep=';')
+datos.shape  # Muestra la forma del DataFrame (filas, columnas)
+print(datos.shape)  # Muestra la forma del DataFrame (filas, columnas)
+datos['Valor_mensual'] = datos['Valor'] + datos['Condominio']  # Crea una nueva columna 'Valor_mensual' que suma 'Valor' y 'Condominio'
+print(datos.head(5))  # Muestra las primeras 5 filas del DataFrame con la nueva columna
+
+#### Valor_anual: esta columna debe de tener los gastos anuales de propiedad, incluyendo el alquiler y el condominio
+
+datos['Valor_anual'] = datos['Valor_mensual'] * 12 + datos['Impuesto'] # Crea una nueva columna 'Valor_anual' que multiplica 'Valor_mensual' por 12 y suma 'Impuesto'
+print(datos.tail(5))  # Muestra las últimas 5 filas del DataFrame con la nueva columna
+
+### Crear columnas categoricas
+#### Descripcion: esta columna debe de tener un resmen de la informacion clave de las propiedades que se mostraran en el sitio web: tipo de propiedad, barrio, cantidad de habitaciones y plazas de estacionamiento
+
+datos['Descripcion'] = datos['Tipo'] + ' en la colonia ' + datos['Colonia'] + \
+' con ' + datos['Habitaciones'].astype(str) + ' cuarto(s) y ' + \
+datos['Garages'].astype(str) + ' plaza(s) de estacionamiento. '  # Crea una nueva columna 'Descripcion' que concatena información clave de las propiedades
+print(datos.head(5))  # Muestra las primeras 5 filas del DataFrame con la nueva columna 'Descripcion'
+
+#### Tener suite: esta debe de ser una columna que indicque unicamente si la propiedad tiene o no suites, sin importar el tipo de propiedad
+
+datos['Tiene_suite'] = datos['Suites'].apply(lambda x: 'Si' if x > 0 else 'No')  # Crea una nueva columna 'Tiene_suite' que indica si la propiedad tiene suites o no
+print(datos.head(5))  # Muestra las primeras 5 filas del DataFrame con la nueva columna 'Tiene_suite'
+
+datos.to_csv('Pandas_conociendo_la_biblioteca\Manipulacion_de_los_datos\imuebles_dev.csv', index=False, sep=';')  # Guarda el DataFrame con las nuevas columnas en un archivo CSV sin el índice

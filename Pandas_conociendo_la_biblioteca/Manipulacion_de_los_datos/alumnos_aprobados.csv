@@ -1,0 +1,8 @@
+Nombre,Edad,Nota,Aprobado,Puntos_extras,Notas_finales,Aprobado_final
+Alberto,20,7.5,True,3.0,10.5,True
+Brian,21,10.0,True,4.0,14.0,True
+Daniela,21,8.0,True,2.8000000000000003,9.8,True
+Stephany,26,10.0,True,4.0,14.0,True
+Miriam,25,9.0,True,3.6,12.6,True
+Milena,29,8.0,True,2.8000000000000003,9.8,True
+Nadia,34,8.0,Verdadero,3.2,11.2,True

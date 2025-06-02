@@ -56,3 +56,25 @@ df[seleccion]
 ```
 
 Muy bien, de esta manera, estamos realizando el filtro exactamente como lo solicitó el equipo de Machine Learning.
+
+###  Para saber más: exportando diferentes formatos
+
+Pandas proporciona varios métodos para guardar archivos en diferentes formatos. Algunos ejemplos son:
+
+to_csv(): Guarda el DataFrame en un archivo CSV (Valores Separados por Comas).
+
+to_excel(): Guarda el DataFrame en un archivo de Excel.
+
+to_json(): Guarda el DataFrame en un archivo JSON (Notación de Objetos JavaScript).
+
+Estos son solo algunos ejemplos, existen otros métodos disponibles en Pandas para guardar archivos en diferentes formatos. Si deseas conocerlos, consulta la documentación: https://pandas.pydata.org/docs/user_guide/io.html#io-tools-text-csv-hdf5
+
+### Lo que aprendimos en esta aula:
+
+    Verificar si una base de datos tiene datos nulos;
+    Tratar los datos nulos;
+    Eliminar filas y columnas de un DataFrame;
+    Realizar diferentes selecciones en una base de datos;
+    Guardar datos en formato csv;
+    Utilizar el método replace para reemplazar valores en una base de datos.
+
