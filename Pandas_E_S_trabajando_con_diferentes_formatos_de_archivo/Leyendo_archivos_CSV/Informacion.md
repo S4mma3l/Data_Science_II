@@ -53,3 +53,35 @@ Si deseas profundizar más en el tema, aquí te dejamos algunos enlaces a materi
     Instituto de Matemáticas y Estadística - IME/USP: Unicode y UTF-8 [](https://www.ime.usp.br/~pf/algoritmos/apend/unicode.html#detection)
     IBM: ¿Qué es Unicode? https://www.ibm.com/docs/pt-br/workload-automation/9.3.0?topic=support-what-is
     Kaggle: codificaciones de caracteres https://www.kaggle.com/code/alexisbcook/character-encodings/tutorial
+
+### Leyendo un archivo CSV
+
+Juliana está trabajando en un proyecto de análisis de datos de ventas para una tienda minorista. Ella recibió un conjunto de datos en formato CSV con los valores separados por punto y coma y necesita importarlo a un DataFrame de la biblioteca Pandas para iniciar el análisis.
+
+¿Cuál es la forma correcta de leer este archivo CSV usando la biblioteca Pandas?
+```python
+pd.read_csv(‘datos_ventas.csv’, sep=‘;’)
+```
+Al leer un archivo CSV con la biblioteca Pandas, es importante especificar el separador de campo correcto usando el parámetro sep. La opción predeterminada es una coma (','), por lo que debemos agregar el separador ;
+
+### Para saber mas explorando la documentacion
+
+La biblioteca Pandas es una de las herramientas más poderosas disponibles para análisis de datos en Python. Ofrece una amplia variedad de funciones que hacen que el proceso de manipulación y análisis de datos sea mucho más fácil y eficiente.
+
+Para aprovechar al máximo todas las funciones de la biblioteca, es esencial explorar su documentación, que es extensa y está bien organizada, y a la que se puede acceder fácilmente en línea. Consulta las indicaciones:
+
+    Función read_csv  https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html
+    Función to_csv  https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html
+
+Explorar la documentación de la biblioteca es importante por varias razones. Puede ayudarle a comprender cómo las funciones y métodos de la biblioteca funcionan y cómo se pueden utilizar para analizar y manipular datos.
+
+Además, la documentación proporciona detalles sobre los parámetros de cada función y ejemplos de cómo se pueden utilizar en la práctica. Entonces, intenta profundizar tus estudios sobre los parámetros de cada función read_csv y to_csv y aprende más sobre cada uno de ellos.
+
+### En esta aula, aprendimos:
+
+    Entender qué es un archivo CSV;
+    Leer un archivo en formato CSV separado por comas y punto y coma;
+    Leer sólo unas pocas líneas y también columnas específicas de un archivo en formato CSV;
+    Escribir un archivo en formato CSV.
+
+
