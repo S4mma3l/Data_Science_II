@@ -52,10 +52,35 @@ from sklearn.metrics import r2_score
 
 print(f' El coeficiente de determinacion del modelo 0 es R2 {round(r2_score(y_test, y_predict),2)}')
 
+sns.pairplot(datos, y_vars=['area_primer_piso', 'area_segundo_piso', 'cantidad_banos'], x_vars=['precio_de_venta'])
+# plt.show()
+
+import statsmodels.api as sm
+
+x_train = sm.add_constant(x_train)
+print(x_train.head())
+
+print(x_train.columns)
 
 
+modelo_1 = sm.OLS(y_train, x_train[['const', 'area_primer_piso', 'tiene_segundo_piso', 'area_segundo_piso',
+       'cantidad_banos', 'capacidad_carros_garage',
+       'calidad_de_cocina_excelente']]).fit()
 
+modelo_2 = sm.OLS(y_train, x_train[['const', 'area_primer_piso', 'tiene_segundo_piso', 
+       'cantidad_banos', 'capacidad_carros_garage',
+       'calidad_de_cocina_excelente']]).fit()
 
+modelo_3 = sm.OLS(y_train, x_train[['const', 'area_primer_piso', 'tiene_segundo_piso', 
+       'cantidad_banos', 'calidad_de_cocina_excelente']]).fit()
 
+modelos =[modelo_0, modelo_1, modelo_2, modelo_3]
 
+for i,j in enumerate(modelos):
+    print(f'********************************\n********* El modelo {i} tiene el siguiente resumen ***********\n*************************')
+    print(j.summary(),'\n\n')
 
+for i,j in enumerate(modelos):
+    print(f'El coeficiente de determinacion del modelo {i} es R2 {round(j.rsquared,2)}')
+
+print(modelo_3.params)
