@@ -66,4 +66,65 @@ y = label_encoder.fit_transform(y)
 
 print(y)
 
+# modelo de entrenamineto y prueba
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=5)
+
+from sklearn.dummy import DummyClassifier
+
+# El modelo simple para clasificar los datos
+
+dummy = DummyClassifier()
+dummy.fit(X_train, y_train)
+
+print(dummy.score(X_test, y_test))
+
+#  arbol de decision
+
+from sklearn.tree import DecisionTreeClassifier
+
+modelo_arbol = DecisionTreeClassifier(random_state=5)
+modelo_arbol.fit(X_train, y_train)
+print(modelo_arbol.score(X_test, y_test))
+
+from sklearn.tree import plot_tree # graficar un arbol de decision
+import matplotlib.pyplot as plt
+
+valores_columnas = ['casado (a)',
+                'divorciado (a)',
+                'soltero (a)',
+                'primaria',
+                'secundaria',
+                'superior',
+                'default',
+                'prestatario',
+                'edad',
+                'saldo',
+                'ultimo_contacto',
+                'ct_contactos']
+
+plt.figure(figsize=(80,25))
+plot_tree(modelo_arbol, feature_names=valores_columnas, filled=True, class_names=['no', 'si'], fontsize=6)
+# plt.show()
+
+print(modelo_arbol.score(X_train, y_train))
+
+modelo_arbol = DecisionTreeClassifier(max_depth=3, random_state=5)
+modelo_arbol.fit(X_train, y_train)
+print(modelo_arbol.score(X_train, y_train))
+print(modelo_arbol.score(X_test, y_test))
+
+plt.figure(figsize=(15,6))
+plot_tree(modelo_arbol, feature_names=valores_columnas, filled=True, class_names=['no', 'si'], fontsize=7)
+# plt.show()
+
+print(modelo_arbol.score(X_train, y_train))
+
+
+
+
+ 
+
 
