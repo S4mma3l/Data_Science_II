@@ -54,4 +54,32 @@ import matplotlib.pyplot as plt
 
 visualizacion = ConfusionMatrixDisplay(confusion_matrix=matriz_de_confusion, display_labels=('Cumplido', 'moroso'))
 visualizacion.plot()
-plt.show()
+# plt.show()
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+print('la precision es:', precision_score(y_val, y_previsto))
+print('la sensibilidad (recall):',recall_score(y_val, y_previsto))
+print('El f1 score:',f1_score(y_val, y_previsto))
+print('la exactitud es:',accuracy_score(y_val, y_previsto))
+
+# Curva ROC carcateristica receptiva operativa
+
+from sklearn.metrics import RocCurveDisplay
+
+roc = RocCurveDisplay.from_predictions(y_val, y_previsto,name= 'Arbol de Decicion')
+# plt.show()
+
+from sklearn.metrics import roc_auc_score
+print(f'El arbol bajo la curva ROC es: {roc_auc_score(y_val, y_previsto)}')
+
+from sklearn.metrics import PrecisionRecallDisplay
+
+precition_recall = PrecisionRecallDisplay.from_predictions(y_val, y_previsto, name='Arbol de decision')
+# plt.show()
+
+from sklearn.metrics import average_precision_score
+print(f'El score promedio de presicion vs recall es {average_precision_score(y_val, y_previsto)}')
+
+from sklearn.metrics import classification_report
+print(classification_report(y_val, y_previsto))
